@@ -10,5 +10,6 @@
 .cadre {
     border: solid;
     width: 80%;
-	height: auto;
+    height: auto;
+    margin-left: 10%;
 }
