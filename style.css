@@ -13,3 +13,12 @@
     height: auto;
     margin-left: 25%;
 }
+
+.bmenu {
+    border: solid;
+    width: 70px;
+    height: auto;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
