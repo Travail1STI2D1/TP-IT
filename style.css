@@ -9,5 +9,6 @@
 
 .cadre {
     border: solid;
-    
+    width: 80%;
+	height: auto;
 }
