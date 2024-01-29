@@ -12,10 +12,12 @@
     width: 50%;
     height: auto;
     margin-left: 25%;
+    border-radius:15px;
 }
 
 .bmenu {
     border: solid;
+    border-radius:15px;
     width: 70px;
     height: auto;
     text-align: center;
