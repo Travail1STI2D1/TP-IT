@@ -6,6 +6,7 @@ h2 {
 button {
     border-radius: 7px;
     cursor: pointer;
+    margin-top: 3px;
 }
 
 .centre {
