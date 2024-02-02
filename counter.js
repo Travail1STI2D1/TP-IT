@@ -16,6 +16,7 @@ function fetchCounterValue() {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${githubToken}`,
+            'Content-Type': 'application/json',
         },
     })
     .then(response => response.json())
