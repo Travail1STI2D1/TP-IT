@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const clickButton = document.getElementById('click-button');
     const clickCountElement = document.getElementById('click-count');
 
-    // Charger le compteur depuis GitHub
+    // Charger le compteur depuis GitHub à chaque chargement de page
     fetchCounterValue();
 
     clickButton.addEventListener('click', () => {
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function fetchCounterValue() {
     // Récupérer le compteur depuis GitHub
-    fetch('https://raw.githubusercontent.com/travail1sti2d1/tp-it/main/click-counter.json')
+    fetch('https://raw.githubusercontent.com/VOTRE_UTILISATEUR/VOTRE_REPO/main/click-counter.json')
         .then(response => response.json())
         .then(data => {
             clickCount = data.count;
@@ -34,7 +34,7 @@ function fetchCounterValue() {
 
 function updateCounterValue() {
     // Mettre à jour le fichier JSON sur GitHub avec le nouveau compteur
-    fetch('https://raw.githubusercontent.com/travail1sti2d1/tp-it/main/click-counter.json', {
+    fetch('https://raw.githubusercontent.com/VOTRE_UTILISATEUR/VOTRE_REPO/main/click-counter.json', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
