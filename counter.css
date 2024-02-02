@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#counter-container {
+    text-align: center;
+}
+
+#counter-value {
+    font-size: 2em;
+}
+
+#increment-button {
+    font-size: 1em;
+    padding: 8px 16px;
+    margin-top: 10px;
+}
