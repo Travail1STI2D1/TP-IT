@@ -1,68 +1,54 @@
-const githubToken = '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';
-const repoOwner = 'travail1sti2d1';
-const repoName = 'TP-IT';
-const filePath = 'counter.json';
+let clickCount;
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Récupérer le fichier au chargement de la page
+    const clickButton = document.getElementById('click-button');
+    const clickCountElement = document.getElementById('click-count');
+
+    // Charger le compteur depuis GitHub
     fetchCounterValue();
 
-    // Ajouter un gestionnaire d'événement au bouton d'incrémentation
-    document.getElementById('increment-button').addEventListener('click', incrementCounter);
+    clickButton.addEventListener('click', () => {
+        // Incrémenter le compteur localement
+        clickCount++;
+
+        // Mettre à jour le compteur sur GitHub
+        updateCounterValue();
+
+        // Mettre à jour l'affichage du compteur
+        updateClickCount();
+    });
 });
 
 function fetchCounterValue() {
-    fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
-        method: 'GET',
-        headers: {
-            Authorization: `Bearer ${githubToken}`,
-            'Content-Type': 'application/json',
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Incrémenter la valeur du compteur
-        data.content = Buffer.from(data.content, 'base64').toString('utf-8');
-        const counterObj = JSON.parse(data.content);
+    // Récupérer le compteur depuis GitHub
+    fetch('https://raw.githubusercontent.com/travail1sti2d1/tp-it/main/click-counter.json')
+        .then(response => response.json())
+        .then(data => {
+            clickCount = data.count;
 
-        // Afficher la valeur du compteur dans l'interface utilisateur
-        document.getElementById('counter-value').textContent = `Counter: ${counterObj.count}`;
-    })
-    .catch(error => console.error('Error fetching counter value:', error));
+            // Mettre à jour l'affichage du compteur
+            updateClickCount();
+        })
+        .catch(error => console.error('Erreur lors de la récupération du compteur :', error));
 }
 
-function incrementCounter() {
-    fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
-        method: 'GET',
+function updateCounterValue() {
+    // Mettre à jour le fichier JSON sur GitHub avec le nouveau compteur
+    fetch('https://raw.githubusercontent.com/travail1sti2d1/tp-it/main/click-counter.json', {
+        method: 'PUT',
         headers: {
-            Authorization: `Bearer ${githubToken}`,
+            'Content-Type': 'application/json',
         },
+        body: JSON.stringify({
+            count: clickCount,
+        }),
     })
-    .then(response => response.json())
-    .then(data => {
-        // Incrémenter la valeur du compteur
-        data.content = Buffer.from(data.content, 'base64').toString('utf-8');
-        const counterObj = JSON.parse(data.content);
-        counterObj.count += 1;
+        .then(() => console.log('Compteur mis à jour avec succès.'))
+        .catch(error => console.error('Erreur lors de la mise à jour du compteur :', error));
+}
 
-        // Mettre à jour la valeur du compteur dans l'interface utilisateur
-        document.getElementById('counter-value').textContent = `Counter: ${counterObj.count}`;
-
-        // Pousser les modifications
-        const updatedContent = Buffer.from(JSON.stringify(counterObj)).toString('base64');
-        return fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
-            method: 'PUT',
-            headers: {
-                Authorization: `Bearer ${githubToken}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                message: 'Increment the counter',
-                content: updatedContent,
-                sha: data.sha,
-            }),
-        });
-    })
-    .then(() => console.log('Counter incremented successfully.'))
-    .catch(error => console.error('Error incrementing counter:', error));
+function updateClickCount() {
+    // Mettre à jour l'affichage du compteur dans l'interface utilisateur
+    const clickCountElement = document.getElementById('click-count');
+    clickCountElement.textContent = `Click Count: ${clickCount}`;
 }

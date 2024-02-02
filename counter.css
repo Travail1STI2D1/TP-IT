@@ -1,22 +1,23 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     height: 100vh;
     margin: 0;
 }
 
-#counter-container {
+.counter-container {
     text-align: center;
 }
 
-#counter-value {
-    font-size: 2em;
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-#increment-button {
-    font-size: 1em;
-    padding: 8px 16px;
+#click-count {
+    font-size: 18px;
     margin-top: 10px;
 }
