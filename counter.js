@@ -33,15 +33,18 @@ function fetchCounterValue() {
 }
 
 function updateCounterValue() {
+    let data; // Déplacer la déclaration de la variable ici
+
     // Récupérer le SHA du fichier actuel
     fetch('https://api.github.com/repos/travail1sti2d1/tp-it/contents/click-counter.json')
         .then(response => response.json())
-        .then(data => {
+        .then(responseData => {
+            data = responseData; // Affecter la valeur de responseData à la variable data
+
             if (data.sha) {
-                // Incrémenter la valeur du compteur
+                // Le reste du code reste inchangé
                 clickCount++;
 
-                // Mettre à jour le fichier sur GitHub en utilisant l'API
                 const updatedContent = btoa(JSON.stringify({ count: clickCount }));
                 fetch('https://api.github.com/repos/travail1sti2d1/tp-it/contents/click-counter.json', {
                     method: 'PUT',
