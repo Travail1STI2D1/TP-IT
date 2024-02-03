@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function fetchCounterValue() {
     // Récupérer le compteur depuis GitHub
-    fetch('https://raw.githubusercontent.com/VOTRE_UTILISATEUR/VOTRE_REPO/main/click-counter.json')
+    fetch('https://raw.githubusercontent.com/travail1sti2d1/tp-it/main/click-counter.json')
         .then(response => response.json())
         .then(data => {
             clickCount = data.count;
@@ -33,18 +33,35 @@ function fetchCounterValue() {
 }
 
 function updateCounterValue() {
-    // Mettre à jour le fichier JSON sur GitHub avec le nouveau compteur
-    fetch('https://raw.githubusercontent.com/VOTRE_UTILISATEUR/VOTRE_REPO/main/click-counter.json', {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            count: clickCount,
-        }),
-    })
-        .then(() => console.log('Compteur mis à jour avec succès.'))
-        .catch(error => console.error('Erreur lors de la mise à jour du compteur :', error));
+    // Récupérer le SHA du fichier actuel
+    fetch('https://api.github.com/repos/travail1sti2d1/tp-it/contents/click-counter.json')
+        .then(response => response.json())
+        .then(data => {
+            if (data.sha) {
+                // Incrémenter la valeur du compteur
+                clickCount++;
+
+                // Mettre à jour le fichier sur GitHub en utilisant l'API
+                const updatedContent = btoa(JSON.stringify({ count: clickCount }));
+                fetch('https://api.github.com/repos/travail1sti2d1/tp-it/contents/click-counter.json', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer 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', // Remplacez par votre jeton d'accès GitHub
+                    },
+                    body: JSON.stringify({
+                        message: 'Increment the counter',
+                        content: updatedContent,
+                        sha: data.sha,
+                    }),
+                })
+                    .then(() => console.log('Compteur mis à jour avec succès.'))
+                    .catch(error => console.error('Erreur lors de la mise à jour du compteur :', error));
+            } else {
+                console.error('Impossible de récupérer le SHA du fichier.');
+            }
+        })
+        .catch(error => console.error('Erreur lors de la récupération du SHA du fichier :', error));
 }
 
 function updateClickCount() {
