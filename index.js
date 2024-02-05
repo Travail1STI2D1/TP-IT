@@ -33,3 +33,14 @@ function redirigerVersNouvellePage() {
     window.location.href = "https://travail1sti2d1.github.io/TP-IT/index.html";
 }
 
+function copierLien() {
+    var lien_copier = "https://bit.ly/TP-IT";
+    var tempInput = document.createElement("input");
+    tempInput.setAttribute("value", lien_copier);
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+
+    alert("Lien copier : https://bit.ly/TP-IT");
+}
