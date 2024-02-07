@@ -57,3 +57,16 @@ let stateView = true;
                 stateView = false;
             }
         }
+
+        let stateView2 = true;
+
+        function afficherView2() {
+            var docview2 = document.getElementById("view2");
+            if (!stateView2) {
+                docview2.style.display = "block";
+                stateView2 = true;
+            } else {
+                docview2.style.display = "none";
+                stateView2 = false;
+            }
+        }
