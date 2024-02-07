@@ -44,3 +44,16 @@ function copierLien() {
 
     alert("Lien copier : https://bit.ly/TP-IT");
 }
+
+let stateView = true;
+
+        function afficherView() {
+            var docview = document.getElementById("view");
+            if (!stateView) {
+                docview.style.display = "block";
+                stateView = true;
+            } else {
+                docview.style.display = "none";
+                stateView = false;
+            }
+        }
