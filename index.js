@@ -29,6 +29,22 @@ let stat1 = false;
             }
         }
 
+        let stat3 = false;
+
+        function afficherDiv3() {
+            var div3 = document.getElementById("contenu3");
+            var divt3 = document.getElementById("titre3");
+            if (!stat3) {
+            div3.style.display = "block";
+            divt3.classList.remove("rounded");
+            stat2 = true;
+            } else {
+                div3.style.display = "none";
+                divt3.classList.add("rounded");
+                stat3 = false;
+            }
+        }
+
 function redirigerVersNouvellePage() {
     window.location.href = "https://travail1sti2d1.github.io/TP-IT/index.html";
 }
