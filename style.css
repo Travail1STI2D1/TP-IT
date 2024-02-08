@@ -95,13 +95,13 @@ button {
 }
 
 #view {
-    display: block; 
+    display: none; 
     margin-left: auto; 
     margin-right: auto;
 }
 
 #view2 {
-    display: block; 
+    display: none; 
     margin-left: auto; 
     margin-right: auto;
 }

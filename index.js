@@ -61,28 +61,34 @@ function copierLien() {
     alert("Lien copier : https://bit.ly/TP-IT");
 }
 
-let stateView = true;
+let stateView = false;
 
         function afficherView() {
+            var imageid = document.getElementById('imgbview');
             var docview = document.getElementById("view");
             if (!stateView) {
                 docview.style.display = "block";
+                imageid.setAttribute('src', 'fermer.png');
                 stateView = true;
             } else {
                 docview.style.display = "none";
+                imageid.setAttribute('src', 'ouvert.png');
                 stateView = false;
             }
         }
 
-        let stateView2 = true;
+        let stateView2 = false;
 
         function afficherView2() {
             var docview2 = document.getElementById("view2");
+            var imageid2 = document.getElementById('imgbview2');
             if (!stateView2) {
                 docview2.style.display = "block";
+                imageid2.setAttribute('src', 'fermer.png');
                 stateView2 = true;
             } else {
                 docview2.style.display = "none";
+                imageid2.setAttribute('src', 'ouvert.png');
                 stateView2 = false;
             }
         }
