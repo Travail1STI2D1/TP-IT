@@ -63,11 +63,25 @@ button {
     border-radius: 10px 10px 0 0;
 }
 
+#contenu3 {
+    display: none;
+}
+
+#titre3 {
+    cursor: pointer;
+    transition: background-color 1.5s ease;
+    border-radius: 10px 10px 0 0;
+}
+
 #titre1:hover {
     background-color: #3bdffc;
 }
 
 #titre2:hover {
+    background-color: #3bdffc;
+}
+
+#titre3:hover {
     background-color: #3bdffc;
 }
 

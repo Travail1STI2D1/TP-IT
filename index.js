@@ -37,7 +37,7 @@ let stat1 = false;
             if (!stat3) {
             div3.style.display = "block";
             divt3.classList.remove("rounded");
-            stat2 = true;
+            stat3 = true;
             } else {
                 div3.style.display = "none";
                 divt3.classList.add("rounded");
