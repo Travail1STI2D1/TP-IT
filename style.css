@@ -1,3 +1,8 @@
+body {
+    background-image: url(fond.jpg);
+    margin: 0;
+}
+
 h2 {
     margin-top: 0; 
     margin-bottom: 0; 
@@ -14,6 +19,17 @@ button {
     text-decoration: none;
 }
 
+.centrei {
+    text-align: center;
+    text-decoration: none;
+    background-color: white;
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid;
+    border-radius: 10px;
+}
+
 .up {
     margin-top: 100px;
     text-align: center;
@@ -25,10 +41,13 @@ button {
     height: auto;
     margin-left: 25%;
     border-radius:15px;
+    background-color: white;
 }
 
 .bmenu {
     border: solid;
+    background-color: white;
+    margin-top: 10px;
     border-radius:15px;
     width: 70px;
     height: auto;
@@ -104,4 +123,15 @@ button {
     display: none; 
     margin-left: auto; 
     margin-right: auto;
+}
+
+.lienfoot{
+    padding:5px;
+    background-color: white;
+    border: solid;
+    border-radius: 15px;
+    width: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: black;
 }
