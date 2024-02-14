@@ -23,7 +23,9 @@ button {
     text-align: center;
     text-decoration: none;
     background-color: white;
-    width: 20%;
+    padding-left: 10px;
+    padding-right: 10px;
+    width:350px;
     margin-left: auto;
     margin-right: auto;
     border: solid;
