@@ -135,3 +135,20 @@ button {
     margin-right: auto;
     border-color: black;
 }
+
+.boutonv {
+    margin-left: 10px; 
+    border: solid; 
+    width:20px; 
+    display: inline-block; 
+    vertical-align: middle; 
+    padding:2px; 
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.boutont {
+    padding:5px;
+    border: solid;
+}
